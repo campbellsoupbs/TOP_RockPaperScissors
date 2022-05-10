@@ -13,7 +13,7 @@ function playRound() {
     let playerTurn = prompt("Enter your choice: ");
     playerTurn = playerTurn.toLowerCase();
     let computerTurn = computerPlay();
-    console.log("Comp: "+computerTurn)
+    console.log("Computer: "+computerTurn)
     console.log("Player: "+playerTurn)
     switch (playerTurn) {
         case "rock":
@@ -46,4 +46,21 @@ function playRound() {
             break;                          
     }
 }
-console.log(playRound())
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    for (let i = 0; i < 5; i++) {
+        let RPS_game = playRound();
+        if (RPS_game.includes("You win") === true) {
+            playerScore++;
+        } else if (RPS_game.includes("You lose") === true) {
+            computerScore++;
+        } else if (RPS_game.includes("Tie") === true) {
+            i--;
+        }
+    }
+    return "Player Score: "+playerScore+" Computer Score: "+computerScore
+}
+
+console.log(game())
