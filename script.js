@@ -54,13 +54,19 @@ function game() {
         let RPS_game = playRound();
         if (RPS_game.includes("You win") === true) {
             playerScore++;
+            console.log("Player Score: "+playerScore+" Computer Score: "+computerScore);
         } else if (RPS_game.includes("You lose") === true) {
             computerScore++;
+            console.log("Player Score: "+playerScore+" Computer Score: "+computerScore);
         } else if (RPS_game.includes("Tie") === true) {
             i--;
         }
     }
-    return "Player Score: "+playerScore+" Computer Score: "+computerScore
+    if (playerScore > computerScore) {
+        return "Final = "+"Player Score: "+playerScore+" Computer Score: "+computerScore+" , You Win!"
+    } else {
+        return "Final = "+"Player Score: "+playerScore+" Computer Score: "+computerScore+" , You Lose!"
+    }
 }
 
 console.log(game())
