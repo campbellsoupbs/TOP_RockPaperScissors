@@ -106,8 +106,12 @@ a {
     font-size: 50px;
 }
 
+.rps-description {
+    font-size: 10px;
+}
+
 .info_cards {
-    margin-top: 50px;
+    margin-top: 20px;
     display: flex;
     justify-content: space-around;
     gap: 50px;

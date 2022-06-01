@@ -1,3 +1,46 @@
+//Global variables
+
+let playerScore = 0;
+let computerScore = 0;
+let rounds = 0;
+
+
+//Selectors
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+
+const choices = document.querySelector('.choices');
+const round = document.querySelector('.round');
+const totals = document.querySelector('.totals');
+
+//Events
+rock.addEventListener('click', pickRock);
+paper.addEventListener('click', pickPaper);
+scissors.addEventListener('click', pickScissors);
+
+
+//Event Functions
+function pickRock(e){
+    let input = 'rock';
+    game(input);
+    round.innerHTML = `<h3>Round: ${rounds}</h3>`;
+}
+
+function pickPaper(e){
+    let input = 'paper';
+    game(input);
+    round.innerHTML = `<h3>Round: ${rounds}</h3>`;
+}
+
+function pickScissors(e){
+    let input = 'scissors';
+    game(input);
+    round.innerHTML = `<h3>Round: ${rounds}</h3>`;
+}
+
+
+//RPS Functions
 function computerPlay() {
     let computerTurn = Math.floor(Math.random()*100)
     if (computerTurn < 33) {
@@ -52,45 +95,22 @@ function playRound(player) {
     return message;
 }
 
-// function game() {
-//     let playerScore = 0;
-//     let computerScore = 0;
-//     for (let i = 0; i < 5; i++) {
-//         let RPS_game = playRound();
-//         if (RPS_game.includes("You win") === true) {
-//             playerScore++;
-//             console.log("Player Score: "+playerScore+" Computer Score: "+computerScore);
-//         } else if (RPS_game.includes("You lose") === true) {
-//             computerScore++;
-//             console.log("Player Score: "+playerScore+" Computer Score: "+computerScore);
-//         } else if (RPS_game.includes("Tie") === true) {
-//             i--;
-//         }
-//     }
-//     if (playerScore > computerScore) {
-//         return "Final = "+"Player Score: "+playerScore+" Computer Score: "+computerScore+" , You Win!"
-//     } else {
-//         return "Final = "+"Player Score: "+playerScore+" Computer Score: "+computerScore+" , You Lose!"
-//     }
-// }
+
 
 function game(input) {
-    let playerScore = 0;
-    let computerScore = 0;
-    let round = 0;
     let player = input;
-    if (round < 5) {
+    if (rounds < 5) {
         let RPS_game = playRound(player);
         if (RPS_game.includes("You win") === true) {
             playerScore++;
-            round++;
+            rounds++;
             totals.innerHTML = `<h3>Player score: ${playerScore}  Corgi score: ${computerScore}</h3>`;
         } else if (RPS_game.includes("You lose") === true) {
             computerScore++;
-            round++;
+            rounds++;
             totals.innerHTML = `<h3>Player score: ${playerScore}  Corgi score: ${computerScore}</h3>`;
         } else if (RPS_game.includes("Tie") === true) {
-            pass;
+            totals.innerHTML = `<h3>Player score: ${playerScore}  Corgi score: ${computerScore}</h3>`;
         }
     // }
     // if (playerScore > computerScore) {
@@ -99,36 +119,4 @@ function game(input) {
     //     return "Final = "+"Player Score: "+playerScore+" Computer Score: "+computerScore+" , You Lose!"
     // }
 }
-}
-
-
-//Selectors
-const rock = document.querySelector('.rock');
-const paper = document.querySelector('.paper');
-const scissors = document.querySelector('.scissors');
-
-const choices = document.querySelector('.choices');
-const round = document.querySelector('.round');
-const totals = document.querySelector('.totals');
-
-//Events
-rock.addEventListener('click', pickRock);
-paper.addEventListener('click', pickPaper);
-scissors.addEventListener('click', pickScissors);
-
-
-//Functions
-function pickRock(e){
-    let input = 'rock';
-    playRound(input)
-}
-
-function pickPaper(e){
-    let input = 'paper';
-    game(input)
-}
-
-function pickScissors(e){
-    let input = 'scissors';
-    game(input)
 }
