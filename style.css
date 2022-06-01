@@ -121,6 +121,7 @@ a {
 
 .card_image {
     border-radius: 10px;
+    -webkit-user-drag: none;
 }
 
 .card_text {
