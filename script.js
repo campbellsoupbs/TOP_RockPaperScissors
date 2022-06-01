@@ -49,6 +49,7 @@ function playRound(player) {
     }
     console.log(message);
     choices.innerHTML = `<h3>Player choice: ${playerTurn}</h3><h3>Corgi choice: ${computerTurn}</h3><h3>${message}</h3>`;
+    return message;
 }
 
 // function game() {
@@ -73,7 +74,32 @@ function playRound(player) {
 //     }
 // }
 
-// console.log(game())
+function game(input) {
+    let playerScore = 0;
+    let computerScore = 0;
+    let round = 0;
+    let player = input;
+    if (round < 5) {
+        let RPS_game = playRound(player);
+        if (RPS_game.includes("You win") === true) {
+            playerScore++;
+            round++;
+            totals.innerHTML = `<h3>Player score: ${playerScore}  Corgi score: ${computerScore}</h3>`;
+        } else if (RPS_game.includes("You lose") === true) {
+            computerScore++;
+            round++;
+            totals.innerHTML = `<h3>Player score: ${playerScore}  Corgi score: ${computerScore}</h3>`;
+        } else if (RPS_game.includes("Tie") === true) {
+            pass;
+        }
+    // }
+    // if (playerScore > computerScore) {
+    //     return "Final = "+"Player Score: "+playerScore+" Computer Score: "+computerScore+" , You Win!"
+    // } else {
+    //     return "Final = "+"Player Score: "+playerScore+" Computer Score: "+computerScore+" , You Lose!"
+    // }
+}
+}
 
 
 //Selectors
@@ -82,7 +108,8 @@ const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
 
 const choices = document.querySelector('.choices');
-
+const round = document.querySelector('.round');
+const totals = document.querySelector('.totals');
 
 //Events
 rock.addEventListener('click', pickRock);
@@ -92,16 +119,16 @@ scissors.addEventListener('click', pickScissors);
 
 //Functions
 function pickRock(e){
-    let player = 'rock';
-    playRound(player)
+    let input = 'rock';
+    playRound(input)
 }
 
 function pickPaper(e){
-    let player = 'paper';
-    playRound(player)
+    let input = 'paper';
+    game(input)
 }
 
 function pickScissors(e){
-    let player = 'scissors';
-    playRound(player)
+    let input = 'scissors';
+    game(input)
 }
